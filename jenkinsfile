@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Clone Repository') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/Rushikeshbilgaye/practice.git'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                sh '''
+                    sudo cp index.html /var/www/html/index.html
+                '''
+            }
+        }
+    }
+}
